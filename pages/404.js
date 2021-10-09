@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import DefaultMeta from '../components/defaultMeta';
+import MetaDefaults from '../components/MetaDefaults';
 
 const Custom404 = () => {
   return (
@@ -10,7 +10,7 @@ const Custom404 = () => {
         <meta property='og:title' content='Page Not Found' />
         <meta property='og:description' content='' />
       </Head>
-      <DefaultMeta />
+      <MetaDefaults />
       <section className='section'>
         <div className='container has-text-centered'>
           <h1 className='title is-1'>Page Not Found</h1>
