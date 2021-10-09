@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import DefaultMeta from '../../components/DefaultMeta';
+import MetaDefaults from '../../components/MetaDefaults';
 import Loader from '../../components/Loader';
 
 const Homepage = ({ homepage }) => {
@@ -18,7 +18,7 @@ const Homepage = ({ homepage }) => {
             content='Welcome to this website demo. Please explore and test out the functionality!'
           />
         </Head>
-        <DefaultMeta />
+        <MetaDefaults />
         <section className='section'>
           <div className='container'>
             <h1>{homepage.header}</h1>
