@@ -8,15 +8,13 @@ export const getStaticProps = async () => {
     content_type: 'homepage',
   });
 
-  // reduce returned object to wanted fields only
-  const homepage = await res.items[0].fields;
-
   return {
     // set amount in seconds after which a page re-generation can occur
     revalidate: pageRevalidate,
     // pass data as props to page
     props: {
-      homepage,
+      // return undefined if res contains missing reference instead of throwing an error, then return null if res?.items[0].fields is null or undefined
+      homepage: res?.items[0].fields ?? null,
     },
   };
 };
