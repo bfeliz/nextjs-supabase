@@ -9,7 +9,7 @@ export const getStaticProps = async () => {
   });
 
   // reduce returned object to wanted fields only
-  const homepage = res.items[0].fields;
+  const homepage = await res.items[0].fields;
 
   return {
     // set amount in seconds after which a page re-generation can occur
