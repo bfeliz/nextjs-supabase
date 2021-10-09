@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import DefaultMeta from '../components/defaultMeta';
+import DefaultMeta from '../components/DefaultMeta';
 
 const Custom404 = () => {
   return (

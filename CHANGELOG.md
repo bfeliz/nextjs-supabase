@@ -2,6 +2,7 @@ PR Add contentful, comments, rewrites - 10/9/2021
 
 - Add comments throughout code
 - Add next.config.js and rewrites
+- Add loader for page load delays
 - Add contentful package and client creation
 - Refactor homepage file structure
 - Fetch homepage data from contentful
