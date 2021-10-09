@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+// set up default meta tags used on every page so they don't have to be re-entered separately for each page
 const DefaultMeta = () => {
   return (
     <Head>

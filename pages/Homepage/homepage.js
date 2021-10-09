@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import DefaultMeta from '../components/defaultMeta';
+import DefaultMeta from '../../components/defaultMeta';
 
-const Homepage = () => {
+const Homepage = ({ homepage }) => {
   return (
     <div>
       <Head>
@@ -19,7 +19,7 @@ const Homepage = () => {
       <DefaultMeta />
       <section className='section'>
         <div className='container'>
-          <h1>Hello World</h1>
+          <h1>{homepage.header}</h1>
         </div>
       </section>
     </div>
