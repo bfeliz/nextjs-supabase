@@ -1,3 +1,8 @@
+PR Add custom 404 and meta tags - 10/9/2021
+
+- Add custom 404 page
+- Add meta tags
+
 PR Add styling and layout - 10/9/2021
 
 - Add Bulma packages
