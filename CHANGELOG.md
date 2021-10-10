@@ -1,3 +1,9 @@
+PR Populate footer, header, and homepage - 10/9/2021
+
+- Populate and style footer
+- Populate and style header
+- Populate and style homepage
+
 PR Add contentful, comments, rewrites - 10/9/2021
 
 - Add comments throughout code

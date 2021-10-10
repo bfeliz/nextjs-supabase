@@ -19,9 +19,10 @@ const Homepage = ({ homepage }) => {
           />
         </Head>
         <MetaDefaults />
-        <section className='section'>
+        <section className='section homepage-content'>
           <div className='container'>
-            <h1>{homepage.header}</h1>
+            <h2 className='title is-2 has-text-centered'>{homepage.header}</h2>
+            <p>{homepage.content}</p>
           </div>
         </section>
       </div>
