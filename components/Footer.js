@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <footer className='footer' aria-label='Footer'>
+    <footer className='footer is-footer' aria-label='Footer'>
       <div className='container'>
         <div className='columns is-vcentered'>
           <div className='column'>
-            <h1>I'm the Footer</h1>
+            <p>Created by Brittany Crosthwait © 2021</p>
           </div>
         </div>
       </div>
