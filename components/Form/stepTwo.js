@@ -1,5 +1,5 @@
-import { WizardStep } from '../../components/Form/FormWizard';
-import Input from '../../components/Form/input';
+import { WizardStep } from './FormWizard';
+import Input from './input';
 
 const StepTwo = ({ validationSchema }) => {
   return (

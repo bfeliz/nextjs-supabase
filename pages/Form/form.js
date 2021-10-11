@@ -5,8 +5,8 @@ import MetaDefaults from '../../components/MetaDefaults';
 import HeroImage from '../../components/HeroImage';
 import { FormWizard } from '../../components/Form/FormWizard';
 import Loader from '../../components/Loader';
-import StepOne from './stepOne';
-import StepTwo from './stepTwo';
+import StepOne from '../../components/Form/stepOne';
+import StepTwo from '../../components/Form/stepTwo';
 
 const Form = ({ form }) => {
   if (form) {
