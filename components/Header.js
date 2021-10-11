@@ -1,36 +1,64 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { useState } from 'react';
+import Link from 'next/link';
 
 const Header = () => {
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
   return (
     <header className='is-fixed-top'>
-      <div className='container'>
-        <div className='columns is-vcentered'>
-          <div className='column'>
-            <h1 className='title is-1'>Website Demo</h1>
+      <nav
+        className='navbar is-navbar'
+        role='navigation'
+        aria-label='main navigation'
+      >
+        <div className='navbar-brand'>
+          <Link className='navbar-item' href='/'>
+            <a>
+              <span className='is-size-2 is-size-3-mobile has-text-weight-medium ml-2 is-brand'>
+                Website Demo
+              </span>
+            </a>
+          </Link>
+
+          <a
+            role='button'
+            className={'navbar-burger' + (hamburgerOpen ? ' is-active' : '')}
+            aria-label='menu'
+            aria-expanded='false'
+            data-target='navbarMenu'
+            onClick={() => setHamburgerOpen(!hamburgerOpen)}
+          >
+            <span aria-hidden='true'></span>
+            <span aria-hidden='true'></span>
+            <span aria-hidden='true'></span>
+          </a>
+        </div>
+
+        <div
+          id='navbarMenu'
+          className={'navbar-menu' + (hamburgerOpen ? ' is-active' : '')}
+        >
+          <div className='navbar-start ml-2'>
+            <Link href={'/'}>
+              <a className='navbar-item is-size-4 is-tab'>Home</a>
+            </Link>
+            <Link href={'/form'}>
+              <a className='navbar-item is-size-4 is-tab'>Form</a>
+            </Link>
           </div>
-          <div className='column has-text-right'>
-            <a
-              href='https://github.com/bfeliz'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <span className='icon is-large is-social-icon'>
-                <FontAwesomeIcon icon={faGithub} size='2x' />
-              </span>
-            </a>
-            <a
-              href='https://www.linkedin.com/in/brittany-crosthwait/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <span className='icon is-large is-social-icon'>
-                <FontAwesomeIcon icon={faLinkedin} size='2x' />
-              </span>
-            </a>
+
+          <div className='navbar-end'>
+            <div className='navbar-item'>
+              <div className='buttons'>
+                <a className='button'>
+                  <strong>Sign up</strong>
+                </a>
+                <a className='button is-light'>Log in</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };

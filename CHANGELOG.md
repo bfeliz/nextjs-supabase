@@ -1,3 +1,10 @@
+PR Add form and misc - 10/11/2021
+
+- Allow ES module support
+- Add two step form
+- Add input component
+- Add react-markdown npm package for contentful integration
+
 PR Populate footer, header, and homepage - 10/9/2021
 
 - Populate and style footer

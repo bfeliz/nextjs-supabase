@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import ReactMarkdown from 'react-markdown';
 import MetaDefaults from '../../components/MetaDefaults';
 import Loader from '../../components/Loader';
 
@@ -19,10 +20,10 @@ const Homepage = ({ homepage }) => {
           />
         </Head>
         <MetaDefaults />
-        <section className='section homepage-content'>
+        <section className='section content'>
           <div className='container'>
             <h2 className='title is-2 has-text-centered'>{homepage.header}</h2>
-            <p>{homepage.content}</p>
+            <ReactMarkdown children={homepage.content} />
           </div>
         </section>
       </div>
