@@ -2,6 +2,8 @@
 import 'bulma/css/bulma.min.css';
 import '../styles/globals.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import 'react-phone-input-2/lib/style.css'
+import "react-datepicker/dist/react-datepicker.css";
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false

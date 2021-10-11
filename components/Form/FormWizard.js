@@ -43,6 +43,7 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
       {(formik) => {
         return (
           <Form>
+            {console.log('formik', formik)}
             {step}
             <section className='mt-6 mb-6'>
               <div className='container'>

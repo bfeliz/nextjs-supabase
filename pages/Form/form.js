@@ -3,10 +3,10 @@ import ReactMarkdown from 'react-markdown';
 import * as Yup from 'yup';
 import MetaDefaults from '../../components/MetaDefaults';
 import HeroImage from '../../components/HeroImage';
-import { FormWizard } from '../../components/Form/FormWizard';
+import { FormWizard } from '../../components/form/FormWizard';
 import Loader from '../../components/Loader';
-import StepOne from '../../components/Form/stepOne';
-import StepTwo from '../../components/Form/stepTwo';
+import StepOne from '../../components/form/steps/StepOne';
+import StepTwo from '../../components/form/steps/StepTwo';
 
 const Form = ({ form }) => {
   if (form) {
@@ -33,7 +33,13 @@ const Form = ({ form }) => {
           </div>
         </section>
         <FormWizard
-          initialValues={{ first_name: '', last_name: '', email: '' }}
+          initialValues={{
+            first_name: '',
+            last_name: '',
+            email: '',
+            phone: '',
+            favorite_pizza: '',
+          }}
         >
           <StepOne
             validationSchema={Yup.object({
@@ -59,14 +65,33 @@ const Form = ({ form }) => {
                   }
                 )
                 .required('Required'),
-            })}
-          />
-          <StepTwo
-            validationSchema={Yup.object({
               email: Yup.string()
                 .email('Invalid email address')
                 .trim()
                 .max(320)
+                .required('Required'),
+              phone: Yup.string()
+                .trim()
+                .min(4)
+                .max(16)
+                .test('numeric', 'Please enter only numbers, 0-9', (value) => {
+                  return /^[0-9]+$/.test(value);
+                })
+                .required('Required'),
+            })}
+          />
+          <StepTwo
+            validationSchema={Yup.object({
+              favorite_pizza: Yup.string()
+                .trim()
+                .max(32)
+                .test(
+                  'alphabetic',
+                  'Please enter only unaccented alphabetical letters, A-Z or a-z',
+                  (value) => {
+                    return /^[A-Za-z\s\-]+$/.test(value);
+                  }
+                )
                 .required('Required'),
             })}
           />

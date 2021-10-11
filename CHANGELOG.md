@@ -1,3 +1,9 @@
+PR Add form components - 10/11/2021
+
+- Add date, phone, and select form components
+- Expand available inputs in form
+- Refactor file component file structure
+
 PR Add form and misc - 10/11/2021
 
 - Allow ES module support
