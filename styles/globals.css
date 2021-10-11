@@ -4,7 +4,7 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   --custom-bg-color: white;
 
-  padding: 0;
+  padding: 40px 0 0 0;
   margin: 0;
   font-family: var(--custom-font-family);
   background-color: var(--custom-bg-color);
@@ -24,6 +24,9 @@ body,
 }
 
 /* header */
+.is-navbar {
+  background-color: #a6c2d3;
+}
 .is-fixed-top {
   left: 0;
   position: fixed;
@@ -34,17 +37,29 @@ body,
   padding: 1rem 0 1rem 0;
 }
 
-.is-social-icon {
+.is-brand {
   color: black;
 }
 
-.is-social-icon:hover {
+.is-brand:hover {
   color: white;
 }
 
-/* main */
-.main-content {
-  margin-top: 7.2em;
+.is-tab:hover {
+  color: white !important;
+  border-bottom-color: white !important;
+}
+
+.is-tab:focus {
+  color: black !important;
+  border-bottom-color: white !important;
+}
+
+/* hero image */
+.image-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 /* footer */
@@ -53,13 +68,21 @@ body,
   padding: 1.5rem 1.5rem 0rem;
 }
 
-/* homepage */
-.homepage-content {
+.is-social-icon {
+  color: black;
+}
+
+.is-social-icon:hover {
+  color: #a6c2d3;
+}
+
+/* pages */
+.content {
   padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
 @media only screen and (max-width: 768px) {
-  .homepage-content {
-    padding-top: 5rem;
+  .content {
+    padding-top: 1.5rem;
   }
 }
