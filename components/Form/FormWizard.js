@@ -33,43 +33,16 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
     }
   };
 
-  const pageGuide = () => {
-    const pageGuide = [];
-    for (let i = 1; i <= 2; i++) {
-      pageGuide.push(
-        <li
-          className={
-            'step-item ' +
-            (parseInt(stepNumber) + 1 !== i
-              ? i < parseInt(stepNumber) + 1
-                ? 'is-completed'
-                : ''
-              : 'is-active')
-          }
-          key={i}
-        >
-          <div className='step-display'>{i}</div>
-        </li>
-      );
-    }
-    return pageGuide;
-  };
-
   return (
     <Formik
       validateOnChange={false}
       initialValues={snapshot}
       onSubmit={handleSubmit}
-      // validationSchema={steps.props.validationSchema}
+      validationSchema={step.props.validationSchema}
     >
       {(formik) => {
         return (
           <Form>
-            <section className='section'>
-              <div className='container'>
-                <ul className='steps is-large'>{pageGuide()}</ul>
-              </div>
-            </section>
             {step}
             <section className='mt-6 mb-6'>
               <div className='container'>

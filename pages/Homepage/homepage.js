@@ -23,8 +23,7 @@ const Homepage = ({ homepage }) => {
         <section className='section content'>
           <div className='container'>
             <h2 className='title is-2 has-text-centered'>{homepage.header}</h2>
-            {/* <p>{homepage.content}</p> */}
-            <ReactMarkdown source={homepage.content} />
+            <ReactMarkdown children={homepage.content} />
           </div>
         </section>
       </div>

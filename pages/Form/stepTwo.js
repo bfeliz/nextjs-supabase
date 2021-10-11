@@ -1,7 +1,7 @@
 import { WizardStep } from '../../components/Form/FormWizard';
 import Input from '../../components/Form/input';
 
-const StepOne = ({ validationSchema }) => {
+const StepTwo = ({ validationSchema }) => {
   return (
     <WizardStep validationSchema={validationSchema}>
       <section>
@@ -15,10 +15,7 @@ const StepOne = ({ validationSchema }) => {
         <div className='container'>
           <div className='columns is-multiline'>
             <div className='column is-6'>
-              <Input name='first_name' label='First Name' type='text' />
-            </div>
-            <div className='column is-6'>
-              <Input name='last_name' label='Last Name' type='text' />
+              <Input name='email' label='Email' type='text' />
             </div>
           </div>
         </div>
@@ -27,4 +24,4 @@ const StepOne = ({ validationSchema }) => {
   );
 };
 
-export default StepOne;
+export default StepTwo;

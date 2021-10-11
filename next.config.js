@@ -12,4 +12,6 @@ module.exports = {
       },
     ];
   },
+  // allow for ES module support
+  experimental: { esmExternals: true },
 };
