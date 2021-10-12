@@ -7,6 +7,7 @@ import { FormWizard } from '../../components/form/FormWizard';
 import Loader from '../../components/Loader';
 import StepOne from '../../components/form/steps/StepOne';
 import StepTwo from '../../components/form/steps/StepTwo';
+import regex from '../../components/form/utils/regex';
 
 const Form = ({ form }) => {
   if (form) {
@@ -39,6 +40,9 @@ const Form = ({ form }) => {
             email: '',
             phone: '',
             favorite_pizza: '',
+            pizza_date: '',
+            pizza_cost: '',
+            delicious: '',
           }}
         >
           <StepOne
@@ -90,6 +94,30 @@ const Form = ({ form }) => {
                   'Please enter only unaccented alphabetical letters, A-Z or a-z',
                   (value) => {
                     return /^[A-Za-z\s\-]+$/.test(value);
+                  }
+                )
+                .required('Required'),
+              pizza_date: Yup.string()
+                .trim()
+                .matches(regex.date, 'Please enter a correct date')
+                .max(10)
+                .test('numeric', 'Please enter only numbers, 0-9', (value) => {
+                  return /^[0-9\/]+$/.test(value);
+                })
+                .required('Required'),
+              pizza_cost: Yup.string()
+                .trim()
+                .matches(regex.currency, 'Please enter a correct dollar amount')
+                .max(64)
+                .required('Required'),
+              delicious: Yup.string()
+                .trim()
+                .max(32)
+                .test(
+                  'alphabetic',
+                  'Please enter only unaccented alphabetical letters, A-Z or a-z',
+                  (value) => {
+                    return /^[A-Za-z\s\!\'\,]+$/.test(value);
                   }
                 )
                 .required('Required'),

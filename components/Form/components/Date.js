@@ -22,7 +22,6 @@ const DateInput = ({ label, ...props }) => {
         id={props.name}
         {...props}
         selected={(field.value && new Date(field.value)) || ''}
-        value={values[props.name]}
         onChange={(date, e) => {
           setFieldValue(
             field.name,
@@ -33,7 +32,6 @@ const DateInput = ({ label, ...props }) => {
         minDate={new Date('1900/01/01')}
         showYearDropdown
         scrollableYearDropdown
-        autoComplete
       />
     </>
   );

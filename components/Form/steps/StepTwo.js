@@ -1,5 +1,8 @@
 import { WizardStep } from '../FormWizard';
 import Select from '../components/Select';
+import DateInput from '../components/date';
+import Currency from '../components/Currency';
+import Radio from '../components/Radio';
 
 const StepTwo = ({ validationSchema }) => {
   return (
@@ -26,6 +29,25 @@ const StepTwo = ({ validationSchema }) => {
                 <option value='veggie'>Veggie</option>
                 <option value='hawaiian'>Hawaiian</option>
               </Select>
+            </div>
+            <div className='column is-6'>
+              <DateInput name='pizza_date' label='Last time you ate pizza?' />
+            </div>
+            <div className='column is-6'>
+              <Currency name='pizza_cost' label='How much did pizza cost?' />
+            </div>
+            <div className='column is-6'>
+              <Radio
+                name='delicious'
+                label='Was it delicious?'
+                options={[
+                  {
+                    key: 'It was fantastic!',
+                    value: 'It was fantastic!',
+                  },
+                  { key: 'Eh, had better', value: 'Eh, had better' },
+                ]}
+              />
             </div>
           </div>
         </div>

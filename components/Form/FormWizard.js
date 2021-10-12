@@ -43,7 +43,6 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
       {(formik) => {
         return (
           <Form>
-            {console.log('formik', formik)}
             {step}
             <section className='mt-6 mb-6'>
               <div className='container'>
@@ -59,7 +58,7 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
                       </button>
                     )}
                     <button
-                      className='button is-primary is-large is-pulled-right'
+                      className='button is-final is-large is-pulled-right'
                       disabled={formik.isSubmitting}
                       type='submit'
                     >

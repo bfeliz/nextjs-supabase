@@ -96,3 +96,11 @@ body,
 .phone-input {
   padding-left: 50px;
 }
+
+.is-final {
+  background-color: #a6c2d3;
+}
+
+.form-radio {
+  font-size: 1.2em;
+}
