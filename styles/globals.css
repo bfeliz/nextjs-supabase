@@ -86,3 +86,21 @@ body,
     padding-top: 1.5rem;
   }
 }
+
+/* form */
+.error-message {
+  color: red;
+  font-weight: lighter;
+}
+
+.phone-input {
+  padding-left: 50px;
+}
+
+.is-final {
+  background-color: #a6c2d3;
+}
+
+.form-radio {
+  font-size: 1.2em;
+}

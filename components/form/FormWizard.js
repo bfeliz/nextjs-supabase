@@ -58,7 +58,7 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
                       </button>
                     )}
                     <button
-                      className='button is-primary is-large is-pulled-right'
+                      className='button is-final is-large is-pulled-right'
                       disabled={formik.isSubmitting}
                       type='submit'
                     >

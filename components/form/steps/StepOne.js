@@ -1,5 +1,6 @@
-import { WizardStep } from './FormWizard';
-import Input from './input';
+import { WizardStep } from '../FormWizard';
+import Input from '../components/Input';
+import Phone from '../components/Phone';
 
 const StepOne = ({ validationSchema }) => {
   return (
@@ -19,6 +20,12 @@ const StepOne = ({ validationSchema }) => {
             </div>
             <div className='column is-6'>
               <Input name='last_name' label='Last Name' type='text' />
+            </div>
+            <div className='column is-6'>
+              <Input name='email' label='Email' type='text' />
+            </div>
+            <div className='column is-6'>
+              <Phone name='phone' label='Phone' />
             </div>
           </div>
         </div>

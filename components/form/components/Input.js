@@ -9,14 +9,14 @@ const Input = ({ label, ...props }) => {
         <label className='label' htmlFor={props.name}>
           {label}{' '}
           {meta.touched && meta.error ? (
-            <span className='is-danger'>{meta.error}</span>
+            <span className='error-message is-danger'>{meta.error}</span>
           ) : null}
         </label>
         <div className='control'>
           <input
             className={
               'input is-large ' +
-              (meta.touched ? (meta.error ? 'is-danger' : 'is-success') : null)
+              (meta.touched ? (meta.error ? 'is-danger' : 'is-success') : '')
             }
             name={props.name}
             id={props.name}
