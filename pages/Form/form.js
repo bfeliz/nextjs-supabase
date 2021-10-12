@@ -3,11 +3,11 @@ import ReactMarkdown from 'react-markdown';
 import * as Yup from 'yup';
 import MetaDefaults from '../../components/MetaDefaults';
 import HeroImage from '../../components/HeroImage';
-import { FormWizard } from '../../components/forms/FormWizard';
+import { FormWizard } from '../../components/form/FormWizard';
 import Loader from '../../components/Loader';
-import StepOne from '../../components/forms/steps/StepOne';
-import StepTwo from '../../components/forms/steps/StepTwo';
-import regex from '../../components/forms/utils/regex';
+import StepOne from '../../components/form/steps/StepOne';
+import StepTwo from '../../components/form/steps/StepTwo';
+import regex from '../../components/form/utils/regex';
 
 const Form = ({ form }) => {
   if (form) {
