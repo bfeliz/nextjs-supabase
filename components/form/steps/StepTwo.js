@@ -1,6 +1,6 @@
 import { WizardStep } from '../FormWizard';
 import Select from '../components/Select';
-import DateInput from '../components/date';
+import DateInput from '../components/Date';
 import Currency from '../components/Currency';
 import Radio from '../components/Radio';
 
