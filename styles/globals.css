@@ -55,11 +55,47 @@ body,
   border-bottom-color: white !important;
 }
 
-/* hero image */
-.image-background {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+/* modal */
+.modal-content {
+  z-index: 3002;
+  position: absolute;
+  inset: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  overflow-y: hidden;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  text-align: center;
+  margin-top: 5.5rem;
+  width: auto;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 900px) {
+  .modal-content {
+    width: 650px;
+  }
+}
+
+@media screen and (min-width: 475px) and (max-width: 900px) {
+  .modal-content {
+    left: 10%;
+    right: 10%;
+    top: 10%;
+    bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .modal-content {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 /* footer */
@@ -81,10 +117,11 @@ body,
   padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
-@media only screen and (max-width: 768px) {
-  .content {
-    padding-top: 1.5rem;
-  }
+/* hero image */
+.image-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 /* form */
