@@ -11,7 +11,9 @@ config.autoAddCss = false
 import MainLayout from '../layouts/MainLayout';
 
 const MyApp = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />
+  return (
+      <Component {...pageProps} />
+  )
 };
 
 // wrap MyApp in MainLayout so it applies to every page automatically

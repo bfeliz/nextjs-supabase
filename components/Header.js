@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import RegisterModal from './user/RegisterModal';
+import UserModal from './user/UserModal';
 
 const Header = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-  const [registerOpen, setRegisterOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState('');
 
-  const modalOpen = (type) => {
-    if (type === 'register') {
-      setRegisterOpen(!registerOpen);
-    }
+  const modalStatus = (type) => {
+    modalOpen ? setModalType('') : setModalType(type);
+    setModalOpen(!modalOpen);
   };
 
   return (
@@ -58,16 +58,25 @@ const Header = () => {
           <div className='navbar-end'>
             <div className='navbar-item'>
               <div className='buttons'>
-                <a className='button' onClick={() => modalOpen('register')}>
+                <a className='button' onClick={() => modalStatus('register')}>
                   <strong>Sign up</strong>
                 </a>
-                <a className='button is-light'>Log in</a>
+                <a
+                  className='button is-light'
+                  onClick={() => modalStatus('login')}
+                >
+                  Log in
+                </a>
               </div>
             </div>
           </div>
         </div>
-        {registerOpen ? (
-          <RegisterModal registerOpen setRegisterOpen={setRegisterOpen} />
+        {modalOpen ? (
+          <UserModal
+            modalOpen
+            setModalOpen={setModalOpen}
+            modalType={modalType}
+          />
         ) : null}
       </nav>
     </header>
