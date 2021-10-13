@@ -1,3 +1,8 @@
+PR Refactor register modal; add Context - 10/13/2021
+
+- Refactor register modal for register and login functionality
+- Add React Context for user auth management
+
 PR Add register modal - 10/12/2021
 
 - Add register modal
