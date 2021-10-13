@@ -1,3 +1,7 @@
+PR Add register modal - 10/12/2021
+
+- Add register modal
+
 PR Add form components - 10/11/2021
 
 - Add date, phone, and select form components

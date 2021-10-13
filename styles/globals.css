@@ -141,3 +141,8 @@ body,
 .form-radio {
   font-size: 1.2em;
 }
+
+.is-password {
+  pointer-events: all;
+  cursor: pointer;
+}
