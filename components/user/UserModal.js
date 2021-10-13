@@ -8,11 +8,10 @@ import Password from '../form/components/Password';
 
 const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
   Modal.setAppElement('body');
-
+  const { signUp, signIn, message, setMessage } = useAuth();
   const [isRegister, setIsRegister] = useState(
     modalType === 'register' ? true : false
   );
-  const { signUp, signIn, message, setMessage } = useAuth();
 
   const handleSubmit = (values, { resetForm }) => {
     isRegister ? signUp(values, { resetForm }) : signIn(values, { resetForm });

@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import ReactMarkdown from 'react-markdown';
 import MetaDefaults from '../../components/MetaDefaults';
+import ReactMarkdown from 'react-markdown';
 import Loader from '../../components/Loader';
 
 const Homepage = ({ homepage }) => {

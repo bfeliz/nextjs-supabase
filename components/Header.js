@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Router from 'next/router';
 import Link from 'next/link';
+import { useAuth } from '../utils/auth/useAuth';
 import UserModal from './user/UserModal';
 
 const Header = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState('');
+  const { user, signOut } = useAuth();
+
+  useEffect(() => {
+    setModalOpen(false);
+  }, [user]);
 
   const modalStatus = (type) => {
     modalOpen ? setModalType('') : setModalType(type);
@@ -58,15 +65,34 @@ const Header = () => {
           <div className='navbar-end'>
             <div className='navbar-item'>
               <div className='buttons'>
-                <a className='button' onClick={() => modalStatus('register')}>
-                  <strong>Sign up</strong>
-                </a>
-                <a
-                  className='button is-light'
-                  onClick={() => modalStatus('login')}
-                >
-                  Log in
-                </a>
+                {user ? (
+                  <>
+                    <a
+                      className='button'
+                      onClick={() => Router.push('/profile')}
+                    >
+                      <strong>Profile</strong>
+                    </a>
+                    <a className='button is-light' onClick={() => signOut()}>
+                      <strong>Log Out</strong>
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      className='button'
+                      onClick={() => modalStatus('register')}
+                    >
+                      <strong>Sign up</strong>
+                    </a>
+                    <a
+                      className='button is-light'
+                      onClick={() => modalStatus('login')}
+                    >
+                      Log in
+                    </a>
+                  </>
+                )}
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import Head from 'next/head';
+import MetaDefaults from '../../components/MetaDefaults';
 import ReactMarkdown from 'react-markdown';
 import * as Yup from 'yup';
-import MetaDefaults from '../../components/MetaDefaults';
 import HeroImage from '../../components/HeroImage';
 import { FormWizard } from '../../components/form/FormWizard';
 import Loader from '../../components/Loader';
@@ -19,7 +19,7 @@ const Form = ({ form }) => {
             name='description'
             content='Use this page to explore form functionality.'
           />
-          <meta property='og:title' content='Homepage' />
+          <meta property='og:title' content='Form' />
           <meta
             property='og:description'
             content='Use this page to explore form functionality.'

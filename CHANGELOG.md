@@ -1,3 +1,9 @@
+PR Add user profile, logout - 10/13/2021
+
+- Add user profile page
+- Add check for user login status
+- Add logout button and functionality
+
 PR Refactor register modal; add Context - 10/13/2021
 
 - Refactor register modal for register and login functionality
