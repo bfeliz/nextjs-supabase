@@ -1,8 +1,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import RegisterModal from './user/RegisterModal';
 
 const Header = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
+
+  const modalOpen = (type) => {
+    if (type === 'register') {
+      setRegisterOpen(!registerOpen);
+    }
+  };
 
   return (
     <header className='is-fixed-top'>
@@ -50,7 +58,7 @@ const Header = () => {
           <div className='navbar-end'>
             <div className='navbar-item'>
               <div className='buttons'>
-                <a className='button'>
+                <a className='button' onClick={() => modalOpen('register')}>
                   <strong>Sign up</strong>
                 </a>
                 <a className='button is-light'>Log in</a>
@@ -58,6 +66,9 @@ const Header = () => {
             </div>
           </div>
         </div>
+        {registerOpen ? (
+          <RegisterModal registerOpen setRegisterOpen={setRegisterOpen} />
+        ) : null}
       </nav>
     </header>
   );

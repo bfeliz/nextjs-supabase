@@ -22,7 +22,7 @@ const StepOne = ({ validationSchema }) => {
               <Input name='last_name' label='Last Name' type='text' />
             </div>
             <div className='column is-6'>
-              <Input name='email' label='Email' type='text' />
+              <Input name='email' label='Email' type='email' />
             </div>
             <div className='column is-6'>
               <Phone name='phone' label='Phone' />
