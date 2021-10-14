@@ -74,6 +74,10 @@ body,
   overflow-y: auto;
 }
 
+.ReactModal__Overlay {
+  z-index: 5000;
+}
+
 @media screen and (min-width: 900px) {
   .modal-content {
     width: 650px;
@@ -115,6 +119,14 @@ body,
 /* pages */
 .content {
   padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.card {
+  height: 100%;
+}
+
+.name-wrap {
+  overflow-wrap: break-word;
 }
 
 /* hero image */

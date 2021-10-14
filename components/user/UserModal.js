@@ -9,12 +9,17 @@ import Password from '../form/components/Password';
 const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
   Modal.setAppElement('body');
   const { signUp, signIn, message, setMessage } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRegister, setIsRegister] = useState(
     modalType === 'register' ? true : false
   );
 
-  const handleSubmit = (values, { resetForm }) => {
-    isRegister ? signUp(values, { resetForm }) : signIn(values, { resetForm });
+  const handleSubmit = (values) => {
+    setIsSubmitting(true);
+    isRegister ? signUp(values) : signIn(values);
+    setTimeout(() => {
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   return (
@@ -76,7 +81,12 @@ const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
                 <Form>
                   <div className='columns is-multiline'>
                     <div className='column is-12'>
-                      <Input name='email' label='Email' type='email' />
+                      <Input
+                        id='modalEmail'
+                        name='email'
+                        label='Email'
+                        type='email'
+                      />
                     </div>
                     <div className='column is-12'>
                       <Password name='password' label='Password' />
@@ -94,9 +104,9 @@ const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
                       <button
                         className={
                           'button is-large is-fullwidth ' +
-                          (formik.isSubmitting ? 'is-loading' : '')
+                          (isSubmitting ? 'is-loading' : '')
                         }
-                        disabled={formik.isSubmitting}
+                        disabled={isSubmitting}
                         type='submit'
                       >
                         {isRegister ? 'Sign Up' : 'Login'}

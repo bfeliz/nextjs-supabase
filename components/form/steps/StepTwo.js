@@ -23,11 +23,11 @@ const StepTwo = ({ validationSchema }) => {
                 label='What is your favorite type of pizza?'
               >
                 <option value={''}> - Pick a Type - </option>
-                <option value='cheese'>Cheese</option>
-                <option value='pepperoni'>Pepperoni</option>
-                <option value='supreme'>Supreme</option>
-                <option value='veggie'>Veggie</option>
-                <option value='hawaiian'>Hawaiian</option>
+                <option value='Cheese'>Cheese</option>
+                <option value='Pepperoni'>Pepperoni</option>
+                <option value='Supreme'>Supreme</option>
+                <option value='Veggie'>Veggie</option>
+                <option value='Hawaiian'>Hawaiian</option>
               </Select>
             </div>
             <div className='column is-6'>
