@@ -27,6 +27,7 @@ body,
 .is-navbar {
   background-color: #a6c2d3;
 }
+
 .is-fixed-top {
   left: 0;
   position: fixed;
@@ -53,6 +54,13 @@ body,
 .is-tab:focus {
   color: black !important;
   border-bottom-color: white !important;
+}
+
+@media screen and (max-width: 1023px) {
+  .is-tab:hover {
+    color: #a6c2d3 !important;
+    border-bottom-color: white !important;
+  }
 }
 
 /* modal */
