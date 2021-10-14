@@ -3,7 +3,6 @@ import Router from 'next/router';
 import Head from 'next/head';
 import MetaDefaults from '../../components/MetaDefaults';
 import { useAuth } from '../../utils/auth/useAuth';
-import getForms from '../../utils/getForms';
 import Card from '../../components/Card';
 
 const Profile = () => {
@@ -18,12 +17,18 @@ const Profile = () => {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    getForms(user.email).then((res) => {
-      setForms(res);
-    });
+    (async () => {
+      const response = await fetch('/api/get-forms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user ? user.email : null),
+      });
+      const data = await response.json();
+      setForms(data);
+    })();
   }, []);
-
-  console.log('forms', typeof forms);
 
   if (isLoggedIn) {
     return (
@@ -58,11 +63,13 @@ const Profile = () => {
                   If you haven't used the form yet, go ahead and try it out!
                 </p>
               </div>
-              <div className='column is-12'>
-                {forms.map((form) => {
-                  console.log('asdfasdfsdf', form);
-                })}
-              </div>
+            </div>
+            <div className='columns is-centered is-multiline'>
+              {/* <div className='column is-3'> */}
+              {forms.map((item, i) => {
+                return <Card key={i} {...item} />;
+              })}
+              {/* </div> */}
             </div>
           </div>
         </section>

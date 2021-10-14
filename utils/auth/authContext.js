@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState('');
 
-  const signUp = async (values, { resetForm }) => {
+  const signUp = async (values) => {
     try {
       const { error } = await supabase.auth.signUp({
         email: values.email,
@@ -19,18 +19,15 @@ export const AuthProvider = ({ children }) => {
         setMessage(
           'There has been an error. This user may already exist. Please try again.'
         );
-        resetForm();
       } else {
         setMessage('You have been registered!');
-        resetForm();
       }
     } catch (error) {
       setMessage('There has been an error. Please try again.');
-      resetForm();
     }
   };
 
-  const signIn = async (values, { resetForm }) => {
+  const signIn = async (values) => {
     try {
       const { error } = await supabase.auth.signIn({
         email: values.email,
@@ -38,14 +35,11 @@ export const AuthProvider = ({ children }) => {
       });
       if (error) {
         setMessage(error.message + ', please try again.');
-        resetForm();
       } else {
         setMessage('You have been logged in!');
-        resetForm();
       }
     } catch (error) {
       setMessage('There has been an error. Please try again.');
-      resetForm();
     }
   };
 

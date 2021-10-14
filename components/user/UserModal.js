@@ -13,8 +13,8 @@ const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
     modalType === 'register' ? true : false
   );
 
-  const handleSubmit = (values, { resetForm }) => {
-    isRegister ? signUp(values, { resetForm }) : signIn(values, { resetForm });
+  const handleSubmit = (values) => {
+    isRegister ? signUp(values) : signIn(values);
   };
 
   return (
@@ -76,7 +76,12 @@ const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
                 <Form>
                   <div className='columns is-multiline'>
                     <div className='column is-12'>
-                      <Input name='email' label='Email' type='email' />
+                      <Input
+                        id='modalEmail'
+                        name='email'
+                        label='Email'
+                        type='email'
+                      />
                     </div>
                     <div className='column is-12'>
                       <Password name='password' label='Password' />
