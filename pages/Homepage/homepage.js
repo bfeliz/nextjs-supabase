@@ -8,6 +8,7 @@ const Homepage = ({ homepage }) => {
   if (homepage) {
     return (
       <div>
+        {/* adds meta tags for SEO purposes */}
         <Head>
           <title>Website Demo Homepage | Website Demo</title>
           <meta
@@ -21,6 +22,7 @@ const Homepage = ({ homepage }) => {
           />
         </Head>
         <MetaDefaults />
+        {/* displays content pulled from Contentful */}
         <section className='section content'>
           <div className='container'>
             <h2 className='title is-2 has-text-centered'>{homepage.header}</h2>
@@ -33,6 +35,7 @@ const Homepage = ({ homepage }) => {
       </div>
     );
   }
+  // displays spinner while waiting for page to load
   return <Loader />;
 };
 

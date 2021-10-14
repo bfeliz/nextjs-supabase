@@ -1,26 +1,45 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
 import { useAuth } from '../utils/auth/useAuth';
 import UserModal from './user/UserModal';
 
+// set up header component
 const Header = () => {
+  // set menu and modal state
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState('');
   const { user, signOut } = useAuth();
+  const ref = useRef();
 
+  // close modal upon signup/login
   useEffect(() => {
     setModalOpen(false);
   }, [user]);
 
+  // listen for keydown to close hamburger menu
+  useEffect(() => {
+    const checkForClick = (e) => {
+      if (hamburgerOpen && ref.current && !ref.current.contains(e.target)) {
+        setHamburgerOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', checkForClick);
+    // cleanup listener
+    return () => {
+      document.removeEventListener('mousedown', checkForClick);
+    };
+  }, [hamburgerOpen]);
+
+  // set modal status
   const modalStatus = (type) => {
     modalOpen ? setModalType('') : setModalType(type);
     setModalOpen(!modalOpen);
   };
 
   return (
-    <header className='is-fixed-top'>
+    <header className='is-fixed-top' ref={ref}>
       <nav
         className='navbar is-navbar'
         role='navigation'
@@ -97,6 +116,8 @@ const Header = () => {
             </div>
           </div>
         </div>
+
+        {/* display modal if open */}
         {modalOpen ? (
           <UserModal
             modalOpen

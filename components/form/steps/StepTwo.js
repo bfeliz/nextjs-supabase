@@ -6,6 +6,7 @@ import Radio from '../components/Radio';
 
 const StepTwo = ({ validationSchema }) => {
   return (
+    // set up step two to form wizard
     <WizardStep validationSchema={validationSchema}>
       <section>
         <div className='container'>

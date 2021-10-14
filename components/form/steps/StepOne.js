@@ -4,6 +4,7 @@ import Phone from '../components/Phone';
 
 const StepOne = ({ validationSchema }) => {
   return (
+    // set up step one to form wizard
     <WizardStep validationSchema={validationSchema}>
       <section>
         <div className='container'>

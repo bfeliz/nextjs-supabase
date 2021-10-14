@@ -7,12 +7,15 @@ const Phone = ({ label, ...props }) => {
 
   return (
     <>
+      {/* set label and error span */}
       <label className='label' htmlFor={props.name}>
         {label}{' '}
         {meta.touched && meta.error ? (
           <span className='error-message is-danger'>{meta.error}</span>
         ) : null}
       </label>
+
+      {/* use react-phone-input-2 npm package to create phone input */}
       <PhoneInput
         inputProps={{
           name: props.name,

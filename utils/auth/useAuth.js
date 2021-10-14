@@ -1,3 +1,4 @@
+// create hook to use contenxt easily throughout application
 import { useContext } from 'react';
 import { AuthContext } from './authContext';
 

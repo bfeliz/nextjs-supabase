@@ -1,5 +1,6 @@
 import { supabase } from './utils/supabaseApiClient';
 
+// fetch forms from supabase Postgres database, returns to frontend
 const getForms = async ({ body }, res) => {
   if (body !== null && body !== undefined) {
     const { data, error } = await supabase

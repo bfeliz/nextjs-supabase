@@ -1,3 +1,4 @@
+// setup contenful client for easy use throughout application
 import { createClient } from 'contentful';
 
 module.exports = () => {

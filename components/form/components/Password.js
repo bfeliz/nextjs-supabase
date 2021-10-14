@@ -9,6 +9,7 @@ const Password = ({ label, ...props }) => {
 
   return (
     <>
+      {/* set label and error span */}
       <div className='field'>
         <label className='label' htmlFor={props.name}>
           {label}{' '}
@@ -16,6 +17,8 @@ const Password = ({ label, ...props }) => {
             <span className='error-message is-danger'>{meta.error}</span>
           ) : null}
         </label>
+
+        {/* use formik npm package to create custom password input */}
         <div className='control has-icons-right'>
           <input
             className={

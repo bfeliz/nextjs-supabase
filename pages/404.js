@@ -4,6 +4,7 @@ import MetaDefaults from '../components/MetaDefaults';
 const Custom404 = () => {
   return (
     <div>
+      {/* adds meta tags for SEO purposes */}
       <Head>
         <title>Page Not Found | Website Demo</title>
         <meta name='description' content='' />
@@ -13,10 +14,10 @@ const Custom404 = () => {
       <MetaDefaults />
       <section className='section'>
         <div className='container has-text-centered'>
-          <h1 className='title is-1'>Page Not Found</h1>
-          <h2 className='subtitle is-2'>
+          <h2 className='title is-2'>Page Not Found</h2>
+          <h4 className='subtitle is-4'>
             Sorry, the page you were looking for cannot be found
-          </h2>
+          </h4>
         </div>
       </section>
     </div>

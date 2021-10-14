@@ -1,3 +1,4 @@
+// setup frontend supabase client for easy use throughout application
 import { createClient } from '@supabase/supabase-js';
 
 // variables generated in supabase

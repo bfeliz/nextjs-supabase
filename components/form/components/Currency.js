@@ -7,12 +7,15 @@ const Currency = ({ label, ...props }) => {
 
   return (
     <>
+      {/* set label and error span */}
       <label className='label' htmlFor={props.name}>
         {label}{' '}
         {meta.touched && meta.error ? (
           <span className='error-message is-danger'>{meta.error}</span>
         ) : null}
       </label>
+
+      {/* use react-currency-input-field npm package to create currency input */}
       <CurrencyInput
         className={
           'input is-large ' +

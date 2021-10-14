@@ -1,3 +1,10 @@
+PR Finalization - 10/14/2021
+
+- Add fix for mobile navbar bug
+- Refactor profile page to drive content from Contentful
+- Update readme
+- Add additional comments where needed
+
 PR Add MarkdownLink component - 10/14/2021
 
 - Add MarkdownLink component

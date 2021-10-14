@@ -7,16 +7,23 @@ import Input from '../form/components/Input';
 import Password from '../form/components/Password';
 
 const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
+  // required for react-modal npm package
   Modal.setAppElement('body');
+
+  // set state for modal
   const { signUp, signIn, message, setMessage } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRegister, setIsRegister] = useState(
     modalType === 'register' ? true : false
   );
 
+  // handle when user clicks submit
   const handleSubmit = (values) => {
+    // set state for button spinner
     setIsSubmitting(true);
+    // submit form data
     isRegister ? signUp(values) : signIn(values);
+    // stop spinner so user can resubmit if errors
     setTimeout(() => {
       setIsSubmitting(false);
     }, 1000);
@@ -24,6 +31,7 @@ const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
 
   return (
     <div>
+      {/* set up react-modal */}
       <Modal
         isOpen={modalOpen}
         onRequestClose={() => {
@@ -42,6 +50,7 @@ const UserModal = ({ modalOpen, setModalOpen, modalType }) => {
           </p>
         </header>
 
+        {/* add formik form to modal; form displays different fields depending if register or login */}
         <section>
           <Formik
             initialValues={{ email: '', password: '', confirm_password: '' }}

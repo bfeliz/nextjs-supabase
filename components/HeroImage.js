@@ -1,3 +1,4 @@
+// set up hero image component
 const HeroImage = (props) => {
   return (
     <>

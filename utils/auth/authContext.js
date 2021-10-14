@@ -2,13 +2,17 @@ import { createContext, useEffect, useState } from 'react';
 import Router from 'next/router';
 import { supabase } from '../supabaseClient';
 
+// create context
 export const AuthContext = createContext({});
 
+// set up provider
 export const AuthProvider = ({ children }) => {
+  // global state
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState('');
 
+  // signup function
   const signUp = async (values) => {
     try {
       const { error } = await supabase.auth.signUp({
@@ -27,6 +31,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // signin function
   const signIn = async (values) => {
     try {
       const { error } = await supabase.auth.signIn({
@@ -43,11 +48,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // signout function
   const signOut = async () => {
     setMessage('');
     await supabase.auth.signOut();
   };
 
+  // watch for user state change through supabase, redirect on login or signout
   useEffect(() => {
     supabase.auth.onAuthStateChange(async (event, session) => {
       const user = session?.user ?? null;

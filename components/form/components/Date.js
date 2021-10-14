@@ -7,12 +7,15 @@ const DateInput = ({ label, ...props }) => {
 
   return (
     <>
+      {/* set label and error span */}
       <label className='label' htmlFor={props.name}>
         {label}{' '}
         {meta.touched && meta.error ? (
           <span className='error-message is-danger'>{meta.error}</span>
         ) : null}
       </label>
+
+      {/* use react-datepicker npm package to create date input */}
       <DatePicker
         className={
           'input is-large is-fullwidth ' +
