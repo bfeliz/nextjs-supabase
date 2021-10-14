@@ -1,9 +1,12 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import Router from 'next/router';
 import { supabase } from '../supabaseClient';
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState('');
 
   const signUp = async (values, { resetForm }) => {
@@ -13,7 +16,9 @@ export const AuthProvider = ({ children }) => {
         password: values.password,
       });
       if (error) {
-        setMessage('There has been an error. Please try again.');
+        setMessage(
+          'There has been an error. This user may already exist. Please try again.'
+        );
         resetForm();
       } else {
         setMessage('You have been registered!');
@@ -32,7 +37,7 @@ export const AuthProvider = ({ children }) => {
         password: values.password,
       });
       if (error) {
-        setMessage('There has been an error. Please try again.');
+        setMessage(error.message + ', please try again.');
         resetForm();
       } else {
         setMessage('You have been logged in!');
@@ -44,8 +49,46 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const signOut = async () => {
+    setMessage('');
+    await supabase.auth.signOut();
+  };
+
+  useEffect(() => {
+    const user = supabase.auth.user();
+
+    if (user) {
+      setUser(user);
+      setIsLoggedIn(true);
+      Router.push('/profile');
+    }
+
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      const user = session?.user ?? null;
+      if (user) {
+        setUser(user);
+        setIsLoggedIn(true);
+        Router.push('/profile');
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+        Router.push('/');
+      }
+    });
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ signUp, signIn, message, setMessage }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isLoggedIn,
+        signUp,
+        signIn,
+        signOut,
+        message,
+        setMessage,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -10,6 +10,10 @@ module.exports = {
         source: '/form',
         destination: '/Form',
       },
+      {
+        source: '/profile',
+        destination: '/Profile',
+      },
     ];
   },
   // allow for ES module support
