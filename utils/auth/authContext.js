@@ -55,14 +55,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const user = supabase.auth.user();
-
-    if (user) {
-      setUser(user);
-      setIsLoggedIn(true);
-      Router.push('/profile');
-    }
-
     supabase.auth.onAuthStateChange(async (event, session) => {
       const user = session?.user ?? null;
       if (user) {
