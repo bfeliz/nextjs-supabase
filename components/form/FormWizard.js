@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import store from 'store2';
 
 const FormWizard = ({ children, initialValues, onSubmit }) => {
   const [stepNumber, setStepNumber] = useState(0);
   const [snapshot, setSnapshot] = useState(initialValues);
-  const [confirmationMessage, setConfirmationMessage] = useState();
+  const [submissionMessage, setSubmissionMessage] = useState(null);
 
   const steps = React.Children.toArray(children);
   const step = steps[stepNumber];
@@ -13,7 +12,6 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
   const isLastStep = parseInt(stepNumber) === parseInt(totalSteps) - 1;
 
   const next = (values) => {
-    store.set('demo_form', values);
     setSnapshot(values);
     setStepNumber(Math.min(parseInt(stepNumber) + 1, totalSteps - 1));
   };
@@ -25,8 +23,16 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
 
   const handleSubmit = async (values, bag) => {
     if (isLastStep) {
-      // save will go here
-      return onSubmit(values, bag);
+      const response = await fetch('/api/save-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+      const data = await response.json();
+      setSubmissionMessage(data.message);
+      bag.resetForm();
     } else {
       bag.setTouched({});
       next(values);
@@ -66,11 +72,8 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
                     </button>
                   </div>
                 </div>
-                {confirmationMessage === false ? (
-                  <div className='notification is-danger mb-5'>
-                    <button className='delete'></button>
-                    Submission error, please try again
-                  </div>
+                {submissionMessage !== null ? (
+                  <div className='notification mb-5'>{submissionMessage}</div>
                 ) : null}
               </div>
             </section>
