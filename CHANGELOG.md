@@ -1,3 +1,7 @@
+PR Add fix for mobile navbar color bug on Safari - 10/14/2021
+
+- Add fix for mobile navbar color bug on Safari
+
 PR Finalization - 10/14/2021
 
 - Add fix for mobile navbar bug
