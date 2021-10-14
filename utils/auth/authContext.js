@@ -6,7 +6,7 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [userLoading, setUserLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState('');
 
   const signUp = async (values, { resetForm }) => {
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
     if (user) {
       setUser(user);
-      setUserLoading(false);
+      setIsLoggedIn(true);
       Router.push('/profile');
     }
 
@@ -67,10 +67,11 @@ export const AuthProvider = ({ children }) => {
       const user = session?.user ?? null;
       if (user) {
         setUser(user);
-        setUserLoading(false);
+        setIsLoggedIn(true);
         Router.push('/profile');
       } else {
         setUser(null);
+        setIsLoggedIn(false);
         Router.push('/');
       }
     });
@@ -80,7 +81,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         user,
-        userLoading,
+        isLoggedIn,
         signUp,
         signIn,
         signOut,

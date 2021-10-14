@@ -5,16 +5,16 @@ import MetaDefaults from '../../components/MetaDefaults';
 import { useAuth } from '../../utils/auth/useAuth';
 
 const Profile = () => {
-  const { user, userLoading } = useAuth();
+  const { user, isLoggedIn } = useAuth();
 
   // protect profile from unauthorized users
   useEffect(() => {
-    if (!user && !userLoading) {
+    if (!isLoggedIn) {
       Router.push('/');
     }
-  }, [user, userLoading]);
+  }, [isLoggedIn]);
 
-  if (user) {
+  if (isLoggedIn) {
     return (
       <div>
         <Head>
