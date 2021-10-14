@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
+import { animateScroll as Scroll } from 'react-scroll';
 
 const FormWizard = ({ children, initialValues, onSubmit }) => {
   const [stepNumber, setStepNumber] = useState(0);
@@ -14,11 +15,13 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
   const next = (values) => {
     setSnapshot(values);
     setStepNumber(Math.min(parseInt(stepNumber) + 1, totalSteps - 1));
+    Scroll.scrollToTop();
   };
 
   const previous = (values) => {
     setSnapshot(values);
     setStepNumber(Math.max(parseInt(stepNumber) - 1, 0));
+    Scroll.scrollToTop();
   };
 
   const handleSubmit = async (values, bag) => {
@@ -32,10 +35,11 @@ const FormWizard = ({ children, initialValues, onSubmit }) => {
       });
       const data = await response.json();
       setSubmissionMessage(data.message);
-      bag.resetForm();
+      response.status === 401 ? null : (bag.resetForm(), setStepNumber(0));
     } else {
       bag.setTouched({});
       next(values);
+      setSubmissionMessage(null);
     }
   };
 

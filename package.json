@@ -26,6 +26,7 @@
         "react-markdown": "^7.0.1",
         "react-modal": "^3.14.3",
         "react-phone-input-2": "^2.14.0",
+        "react-scroll": "^1.8.4",
         "yup": "^0.32.9"
     }
 }
