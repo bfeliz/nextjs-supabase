@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import MetaDefaults from '../../components/MetaDefaults';
 import ReactMarkdown from 'react-markdown';
+import MarkdownLink from '../../components/MarkdownLink';
 import * as Yup from 'yup';
 import HeroImage from '../../components/HeroImage';
 import { FormWizard } from '../../components/form/FormWizard';
@@ -30,7 +31,10 @@ const Form = ({ form }) => {
         <section className='section content'>
           <div className='container'>
             <h2 className='title is-2 has-text-centered'>{form.header}</h2>
-            <ReactMarkdown children={form.subHeader} />
+            <ReactMarkdown
+              children={form.subHeader}
+              components={{ a: MarkdownLink }}
+            />
           </div>
         </section>
         <FormWizard
