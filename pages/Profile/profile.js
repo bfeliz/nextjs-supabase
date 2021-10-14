@@ -2,20 +2,22 @@ import { useEffect, useState } from 'react';
 import Router from 'next/router';
 import Head from 'next/head';
 import MetaDefaults from '../../components/MetaDefaults';
+import ReactMarkdown from 'react-markdown';
 import { useAuth } from '../../utils/auth/useAuth';
 import Card from '../../components/Card';
 
-const Profile = () => {
+const Profile = ({ profile }) => {
   const { user, isLoggedIn } = useAuth();
   const [forms, setForms] = useState([]);
 
-  // protect profile from unauthorized users
+  // protect profile from unauthorized users by redirecting to homepage
   useEffect(() => {
     if (!isLoggedIn) {
       Router.push('/');
     }
   }, [isLoggedIn]);
 
+  // fetches any completed forms from database that user submitted
   useEffect(() => {
     (async () => {
       const response = await fetch('/api/get-forms', {
@@ -33,6 +35,7 @@ const Profile = () => {
   if (isLoggedIn) {
     return (
       <div>
+        {/* adds meta tags for SEO purposes */}
         <Head>
           <title>Website Demo Profile Page | Website Demo</title>
           <meta
@@ -46,30 +49,25 @@ const Profile = () => {
           />
         </Head>
         <MetaDefaults />
+        {/* displays content pulled from Contentful */}
         <section className='section content'>
           <div className='container'>
             <div className='columns'>
               <div className='column is-12'>
                 <h2 className='title is-2 has-text-centered'>
-                  {`Hello ${user.email}!`}
+                  {`${profile.header} ${user.email}!`}
                 </h2>
-                <p className='has-text-centered'>
-                  Glad you made it! This is a sample profile page, see your
-                  personalized welcome up above?
-                </p>
-                <p className='has-text-centered'>
-                  If you submitted a form and logged in with the same email
-                  address you input within the form, you can see that data here.
-                  If you haven't used the form yet, go ahead and try it out!
-                </p>
+                <ReactMarkdown
+                  children={profile.content}
+                  className='has-text-centered'
+                />
               </div>
             </div>
+            {/* pass form data to card component */}
             <div className='columns is-centered is-multiline'>
-              {/* <div className='column is-3'> */}
               {forms.map((item, i) => {
                 return <Card key={i} {...item} />;
               })}
-              {/* </div> */}
             </div>
           </div>
         </section>
@@ -77,6 +75,7 @@ const Profile = () => {
     );
   }
 
+  // display only header and footer before redirect to homepage for unauthorized users
   return <div></div>;
 };
 

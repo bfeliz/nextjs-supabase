@@ -5,6 +5,7 @@ const Radio = ({ label, ...props }) => {
 
   return (
     <>
+      {/* set label and error span */}
       <div className='field'>
         <label className='label' htmlFor={props.name}>
           {label}{' '}
@@ -12,6 +13,8 @@ const Radio = ({ label, ...props }) => {
             <span className='error-message is-danger'>{meta.error}</span>
           ) : null}
         </label>
+
+        {/* use formik npm package to create radio buttons */}
         <div className='control'>
           {props.options.map((option) => {
             return (

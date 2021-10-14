@@ -1,3 +1,4 @@
+// set up card component to display user form data
 const Card = (item) => {
   const phone = item.phone.toString();
   return (

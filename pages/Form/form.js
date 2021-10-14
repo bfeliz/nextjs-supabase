@@ -14,6 +14,7 @@ const Form = ({ form }) => {
   if (form) {
     return (
       <div>
+        {/* adds meta tags for SEO purposes */}
         <Head>
           <title>Website Demo Form | Website Demo</title>
           <meta
@@ -27,6 +28,7 @@ const Form = ({ form }) => {
           />
         </Head>
         <MetaDefaults />
+        {/* sets hero image and page content, pulled from contentful */}
         <HeroImage url={form.heroImage.fields.file.url} />
         <section className='section content'>
           <div className='container'>
@@ -37,6 +39,8 @@ const Form = ({ form }) => {
             />
           </div>
         </section>
+
+        {/* initializes form, using wizard component */}
         <FormWizard
           initialValues={{
             first_name: '',
@@ -49,6 +53,7 @@ const Form = ({ form }) => {
             delicious: '',
           }}
         >
+          {/* wizard steps, with validations passed as props */}
           <StepOne
             validationSchema={Yup.object({
               first_name: Yup.string()
@@ -131,6 +136,7 @@ const Form = ({ form }) => {
       </div>
     );
   }
+  // displays spinner while waiting for page to load
   return <Loader />;
 };
 

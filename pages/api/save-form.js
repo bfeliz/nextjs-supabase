@@ -1,5 +1,6 @@
 import { supabase } from './utils/supabaseApiClient';
 
+// posts forms to supabase Postgres database, returns status to frontend
 const saveForm = async (req, res) => {
   const { error } = await supabase
     .from('forms')

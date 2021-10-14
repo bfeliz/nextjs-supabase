@@ -1,5 +1,6 @@
 import Loader from 'react-loader-spinner';
 
+// set up loader component
 const CustomLoader = () => {
   return (
     <div className='has-text-centered'>

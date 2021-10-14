@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
+// set up footer component
 const Footer = () => {
   return (
     <footer className='footer is-footer has-text-centered' aria-label='Footer'>

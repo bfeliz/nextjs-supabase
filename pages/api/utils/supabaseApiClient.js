@@ -1,3 +1,4 @@
+// setup api supabase client for easy use throughout application; using this backend version protects database from alteration on client-side
 import { createClient } from '@supabase/supabase-js';
 
 // variables generated in supabase

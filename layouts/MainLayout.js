@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import { AuthProvider } from '../utils/auth/authContext';
 
 // set layout for every page, eliminating the need to import common components individually
+// layout includes header, footer, and access auth context
 const MainLayout = (Page) => {
   function Wrapper(props) {
     return (
